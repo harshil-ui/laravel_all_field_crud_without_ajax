@@ -6,6 +6,8 @@
 
 @section('content')
 
+    <a href="{{ route('create-contract') }}">Crete contract category</a>
+
     <form action="{{ route('insertCustomer') }}" method="post" enctype="multipart/form-data">
         @csrf
 
@@ -18,7 +20,7 @@
                     <div class="mb-3">
                         <label for="first_name" class="form-label">First name : </label>
                         <input type="text" class="form-control" id="first_name" name="first_name"
-                            placeholder="Enter first name" required>
+                            placeholder="Enter first name">
                     </div>
 
                     <div class="mb-3">
@@ -31,8 +33,42 @@
 
                     <div class="mb-3">
                         <label for="email">Email : </label>
-                        <input type="email" name="email" id="email" class="form-control" placeholder="Enter email"
-                            required>
+                        <input type="email" name="email" id="email" class="form-control" placeholder="Enter email">
+                    </div>
+
+                    {{-- Password field --}}
+
+                    <div class="mb-3">
+                        <label for="password">Password : </label>
+                        <input type="password" name="password" id="password" class="form-control"
+                            placeholder="Enter password">
+                    </div>
+
+                    {{-- Number Field --}}
+
+                    <div class="mb-3">
+                        <label for="number">Number : </label>
+                        <input type="text" name="number" id="number" class="form-control" placeholder="Enter number">
+                    </div>
+
+                    {{-- Date picker --}}
+
+                    <div class="mb-3">
+                        <label for="date">Date : </label>
+                        <input type="text" name="date" id="date" placeholder=" Select date"
+                            class="datepicker form-control">
+                    </div>
+
+                    {{-- Select --}}
+
+                    <div class="mb-3">
+                        <label for="contract_category_id">Contract category : </label>
+                        <select name="contract_category_id" id="contract_category_id" class="form-control">
+                            <option value="">--Select contract category--</option>
+                            @foreach ($contractCategory as $item)
+                                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                            @endforeach
+                        </select>
                     </div>
 
                     <div class="mb-3">
@@ -43,5 +79,6 @@
             </div>
         </div>
     </form>
-
 @endsection
+
+@extends('layouts.footer')

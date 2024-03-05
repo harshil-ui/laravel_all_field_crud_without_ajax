@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContractCategoryController;
 use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,8 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-})->name('home');
+Route::get('/', [CustomerController::class, 'create'])->name('home');
 
 Route::post('/store', [CustomerController::class, 'store'])->name('insertCustomer');
+
+Route::get('/create-contract', [ContractCategoryController::class, 'create'])->name('create-contract');
+
+Route::post('/insert-contract', [ContractCategoryController::class, 'store'])->name('insert-contract');
