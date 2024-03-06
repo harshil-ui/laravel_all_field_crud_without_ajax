@@ -16,6 +16,7 @@ class Customer extends Model
         'password',
         'number',
         'date',
-        'contract_category_id'
+        'contract_category_id',
+        'country'
     ];
 }

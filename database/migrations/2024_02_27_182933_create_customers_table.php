@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('password');
             $table->double('number', 5, 2);
             $table->date('date');
+            $table->text('country');
             $table->timestamps();
         });
     }

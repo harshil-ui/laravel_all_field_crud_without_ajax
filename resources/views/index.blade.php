@@ -71,6 +71,20 @@
                         </select>
                     </div>
 
+                    {{-- Multiple select --}}
+
+                    <div class="mb-3">
+                        <label for="country">Country :</label>
+                        <select name="country[]" id="country" class="form-control" multiple>
+                            <option value="india">India</option>
+                            <option value="japan">Japan</option>
+                            <option value="usa">USA</option>
+                            <option value="uk">UK</option>
+                            <option value="russia">Russia</option>
+                            <option value="poland">Poland</option>
+                        </select>
+                    </div>
+
                     <div class="mb-3">
                         <button type="submit" class="btn btn-primary">Add</button>
                     </div>

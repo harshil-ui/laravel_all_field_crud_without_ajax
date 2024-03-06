@@ -13,6 +13,7 @@ class CustomerController extends Controller
     {
         $data = $request->validated();
         $data['password'] = Hash::make($data['password']);
+        $data['country'] = json_encode($data['country']);
         Customer::create($data);
         return redirect(route('home'))->with('message', 'Customer created successfully');
     }
