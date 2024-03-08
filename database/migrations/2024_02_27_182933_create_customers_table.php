@@ -17,6 +17,7 @@ return new class extends Migration
             $table->double('number', 5, 2);
             $table->date('date');
             $table->text('country');
+            $table->string('image');
             $table->timestamps();
         });
     }

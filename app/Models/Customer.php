@@ -17,6 +17,7 @@ class Customer extends Model
         'number',
         'date',
         'contract_category_id',
-        'country'
+        'country',
+        'image'
     ];
 }
