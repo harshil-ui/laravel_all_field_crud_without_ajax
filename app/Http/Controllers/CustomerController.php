@@ -18,13 +18,15 @@ class CustomerController extends Controller
         $data['password'] = Hash::make($data['password']);
         $data['country'] = json_encode($data['country']);
         $data['image'] = $path;
+        $data['sports'] = json_encode($data['sports']);
         Customer::create($data);
         return redirect(route('home'))->with('message', 'Customer created successfully');
     }
 
     public function create()
     {
-        return view('index', ['contractCategory' => $this->getContractCategory()]);
+        $sports = ['cricket', 'football', 'tennis', 'hockey'];
+        return view('index', ['contractCategory' => $this->getContractCategory(), 'sports' => $sports]);
     }
 
     public function getContractCategory()

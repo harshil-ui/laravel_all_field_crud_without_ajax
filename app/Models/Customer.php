@@ -18,6 +18,8 @@ class Customer extends Model
         'date',
         'contract_category_id',
         'country',
-        'image'
+        'image',
+        'comment',
+        'sports'
     ];
 }

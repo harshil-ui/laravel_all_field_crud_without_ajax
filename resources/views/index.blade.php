@@ -92,6 +92,23 @@
                         <input type="file" name="image" id="image" class="image form-control">
                     </div>
 
+                    {{-- Text area --}}
+
+                    <div class="mb-3">
+                        <label for="comment">Comment :</label>
+                        <textarea name="comment" class="form-control" id="comment" rows="3"></textarea>
+                    </div>
+
+                    {{-- Check boxed --}}
+
+                    <div class="mb-3">
+                        <label for="sports"> Favourite sports :</label>
+                        @foreach ($sports as $val)
+                            <label for="">{{ $val }} :</label>
+                            <input type="checkbox" name="sports[]" id="sports" value="{{ $val }}">
+                        @endforeach
+                    </div>
+
                     <div class="mb-3">
                         <button type="submit" class="btn btn-primary">Add</button>
                     </div>

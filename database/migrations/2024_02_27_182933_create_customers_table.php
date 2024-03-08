@@ -18,6 +18,8 @@ return new class extends Migration
             $table->date('date');
             $table->text('country');
             $table->string('image');
+            $table->text('comment')->nullable();
+            $table->json('sports');
             $table->timestamps();
         });
     }

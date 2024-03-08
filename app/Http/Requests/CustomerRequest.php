@@ -23,7 +23,9 @@ class CustomerRequest extends FormRequest
             'country' => ['required', 'array'],
             'image' => ['required', File::image()
                 ->min(1)
-                ->max(1024 * 12)]
+                ->max(1024 * 12)],
+            'comment' => ['nullable'],
+            'sports' => ['required', 'array']
         ];
     }
 }
