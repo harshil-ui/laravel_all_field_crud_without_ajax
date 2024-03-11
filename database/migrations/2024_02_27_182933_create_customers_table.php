@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('image');
             $table->text('comment')->nullable();
             $table->json('sports');
+            $table->enum('gender', ['male', 'female']);
             $table->timestamps();
         });
     }

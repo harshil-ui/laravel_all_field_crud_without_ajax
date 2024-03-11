@@ -102,11 +102,21 @@
                     {{-- Check boxed --}}
 
                     <div class="mb-3">
-                        <label for="sports"> Favourite sports :</label>
+                        <label for="sports"> Favourite sports </label><br>
                         @foreach ($sports as $val)
                             <label for="">{{ $val }} :</label>
                             <input type="checkbox" name="sports[]" id="sports" value="{{ $val }}">
                         @endforeach
+                    </div>
+
+                    {{-- Radio --}}
+
+                    <div class="mb-3">
+                        <label for="gender">Gender </label><br>
+                        <label for="male">Male : </label>
+                        <input type="radio" name="gender" id="gender" value="male">
+                        <label for="female">Female : </label>
+                        <input type="radio" name="gender" id="gender" value="female">
                     </div>
 
                     <div class="mb-3">

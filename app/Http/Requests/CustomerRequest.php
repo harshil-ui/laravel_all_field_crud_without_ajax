@@ -12,6 +12,7 @@ class CustomerRequest extends FormRequest
 {
     public function rules(Request $rq)
     {
+        // dd($rq->all());
         return [
             'first_name' => ['required'],
             'last_name' => ['nullable'],
@@ -25,7 +26,8 @@ class CustomerRequest extends FormRequest
                 ->min(1)
                 ->max(1024 * 12)],
             'comment' => ['nullable'],
-            'sports' => ['required', 'array']
+            'sports' => ['required', 'array'],
+            'gender' => ['required']
         ];
     }
 }
