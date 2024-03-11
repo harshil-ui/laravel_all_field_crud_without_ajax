@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\ContractCategoryController;
 use App\Http\Controllers\CustomerController;
-use App\Models\ContractCategory;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,7 +21,7 @@ Route::controller(CustomerController::class)->group(function () {
     Route::post('/store', 'store')->name('insertCustomer');
 });
 
-Route::controller(ContractCategory::class)->group(function () {
+Route::controller(ContractCategoryController::class)->group(function () {
     Route::get('/create-contract', 'create')->name('create-contract');
     Route::post('/insert-contract', 'store')->name('insert-contract');
 });
