@@ -15,10 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [CustomerController::class, 'create'])->name('home');
 
-Route::post('/store', [CustomerController::class, 'store'])->name('insertCustomer');
+Route::controller(CustomerController::class)->group(function () {
+    Route::get('/', 'create')->name('home');
+    Route::post('/store', 'store')->name('insertCustomer');
+});
 
-Route::get('/create-contract', [ContractCategoryController::class, 'create'])->name('create-contract');
-
-Route::post('/insert-contract', [ContractCategoryController::class, 'store'])->name('insert-contract');
+Route::controller(ContractCategoryController::class)->group(function () {
+    Route::get('/create-contract', 'create')->name('create-contract');
+    Route::post('/insert-contract', 'store')->name('insert-contract');
+});
