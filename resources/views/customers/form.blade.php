@@ -7,6 +7,8 @@
 @section('content')
 
     <a href="{{ route('create-contract') }}">Crete contract category</a>
+    <br>
+    <a href="{{ route('table') }}">List</a>
 
     <form action="{{ route('insertCustomer') }}" method="post" enctype="multipart/form-data">
         @csrf

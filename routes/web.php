@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::controller(CustomerController::class)->group(function () {
     Route::get('/', 'create')->name('home');
     Route::post('/store', 'store')->name('insertCustomer');
+    Route::get('/list', 'list')->name('table');
 });
 
 Route::controller(ContractCategoryController::class)->group(function () {
