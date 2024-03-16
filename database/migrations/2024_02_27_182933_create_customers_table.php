@@ -14,7 +14,7 @@ return new class extends Migration
             $table->string('last_name')->nullable();
             $table->string('email')->unique();
             $table->string('password');
-            $table->double('number', 5, 2);
+            $table->integer('number');
             $table->date('date');
             $table->text('country');
             $table->string('image');

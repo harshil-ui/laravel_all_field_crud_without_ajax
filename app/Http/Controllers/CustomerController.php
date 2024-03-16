@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CustomerRequest;
 use App\Models\ContractCategory;
 use App\Models\Customer;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Storage;
 
 
 class CustomerController extends Controller
@@ -14,7 +14,7 @@ class CustomerController extends Controller
     public function store(CustomerRequest $request)
     {
         $data = $request->validated();
-        $path = $request->file('image')->store('avatars');
+        $path = $request->file('image')->store('public/avatars');
         $data['password'] = Hash::make($data['password']);
         $data['country'] = json_encode($data['country']);
         $data['image'] = $path;
@@ -32,5 +32,14 @@ class CustomerController extends Controller
     public function getContractCategory()
     {
         return ContractCategory::select('id', 'name')->get();
+    }
+
+    public function list()
+    {
+        $customers = DB::table('customers')
+            ->join('contract_categories', 'customers.contract_category_id', '=', 'contract_categories.id')
+            ->select('customers.*', 'contract_categories.name AS contractCategory')
+            ->get();
+        return view('customers.index', ['customers' => $customers]);
     }
 }
