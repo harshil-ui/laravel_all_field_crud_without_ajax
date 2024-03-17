@@ -24,13 +24,13 @@
                     <!-- Text input -->
                     <div class="mb-3">
                         <label for="first_name" class="form-label">First name : </label>
-                        <input type="text" class="form-control" id="first_name" name="first_name"
+                        <input type="text" class="form-control" autocomplete="off" id="first_name" name="first_name"
                             placeholder="Enter first name" value="{{ isset($customer) ? $customer->first_name : '' }}">
                     </div>
 
                     <div class="mb-3">
                         <label for="last_name">Last name : </label>
-                        <input type="text" class="form-control" name="last_name" id="last_name"
+                        <input type="text" class="form-control" autocomplete="off" name="last_name" id="last_name"
                             placeholder="Enter last name" value="{{ isset($customer) ? $customer->last_name : '' }}">
                     </div>
 
@@ -38,7 +38,7 @@
 
                     <div class="mb-3">
                         <label for="email">Email : </label>
-                        <input type="email" name="email" id="email" class="form-control" placeholder="Enter email"
+                        <input type="email" name="email" autocomplete="off" id="email" class="form-control" placeholder="Enter email"
                             value="{{ isset($customer->email) ? $customer->email : '' }}">
                     </div>
 
@@ -55,7 +55,7 @@
 
                     <div class="mb-3">
                         <label for="number">Number : </label>
-                        <input type="text" name="number" id="number" class="form-control" placeholder="Enter number"
+                        <input type="text" name="number" id="number" autocomplete="off" class="form-control" placeholder="Enter number"
                             value="{{ isset($customer->number) ? $customer->number : '' }}">
                     </div>
 
@@ -63,7 +63,7 @@
 
                     <div class="mb-3">
                         <label for="date">Date : </label>
-                        <input type="text" name="date" id="date" placeholder=" Select date"
+                        <input type="text" name="date" id="date" autocomplete="off" placeholder=" Select date"
                             class="datepicker form-control" value="{{ isset($customer->date) ? $customer->date : '' }}">
                     </div>
 
@@ -138,7 +138,7 @@
                             <div>
                                 <label for="female">Female : </label>
                                 <input type="radio" name="gender" id="female" value="female"
-                                    {{ isset($customer->gender) & ($customer->gender === 'female') ? 'checked' : '' }}>
+                                    {{ isset($customer->gender) && $customer->gender === 'female' ? 'checked' : '' }}>
                             </div>
                         </fieldset>
                     </div>
