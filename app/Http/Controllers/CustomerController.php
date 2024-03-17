@@ -59,4 +59,15 @@ class CustomerController extends Controller
             'countries' => $this->countries
         ]);
     }
+
+    public function update(CustomerRequest $request, Customer $customer)
+    {
+        $data = $request->validated();
+        $path = $request->file('image')->store('public/avatars');
+        $data['country'] = json_encode($data['country']);
+        $data['image'] = $path;
+        $data['sports'] = json_encode($data['sports']);
+        $customer->update($data);
+        return redirect(route('table'))->with('message', 'Customer updated successfully');
+    }
 }
