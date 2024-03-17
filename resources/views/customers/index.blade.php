@@ -38,10 +38,10 @@
                         width="100px">
                 </td>
                 <td>{{ $value->comment }}</td>
-                <td>{{ implode(', ',json_decode($value->sports)) }}</td>
+                <td>{{ implode(', ', json_decode($value->sports)) }}</td>
                 <td>{{ $value->gender }}</td>
                 <td>
-                    <a href="">Edit</a>
+                    <a href="{{ route('editCustomer', $value->id) }}">Edit</a>
                     <a href="">Delete</a>
                 </td>
             </tr>

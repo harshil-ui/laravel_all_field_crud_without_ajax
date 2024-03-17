@@ -14,13 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('contract_categories', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->string('name');
             $table->timestamps();
         });
 
         Schema::table('customers', function (Blueprint $table) {
-            $table->foreignId('contract_category_id')
+            $table->foreignUuid('contract_category_id')
                 ->after('date')
                 ->constrained(
                     table: 'contract_categories'

@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\Hash;
 
 class CustomerController extends Controller
 {
+    public $sports = ['cricket', 'football', 'tennis', 'hockey'];
+    public $countries = ['India', 'Japan', 'USA', 'UK', 'France', 'Germany'];
+
     public function store(CustomerRequest $request)
     {
         $data = $request->validated();
@@ -20,13 +23,17 @@ class CustomerController extends Controller
         $data['image'] = $path;
         $data['sports'] = json_encode($data['sports']);
         Customer::create($data);
-        return redirect(route('home'))->with('message', 'Customer created successfully');
+        return redirect(route('table'))->with('message', 'Customer created successfully');
     }
 
     public function create()
     {
-        $sports = ['cricket', 'football', 'tennis', 'hockey'];
-        return view('customers.form', ['contractCategory' => $this->getContractCategory(), 'sports' => $sports]);
+
+        return view('customers.form', [
+            'contractCategory' => $this->getContractCategory(),
+            'sports' => $this->sports,
+            'countries' => $this->countries
+        ]);
     }
 
     public function getContractCategory()
@@ -41,5 +48,15 @@ class CustomerController extends Controller
             ->select('customers.*', 'contract_categories.name AS contractCategory')
             ->get();
         return view('customers.index', ['customers' => $customers]);
+    }
+
+    public function edit(Customer $customer)
+    {
+        return view('customers.form', [
+            'customer' => $customer,
+            'contractCategory' => $this->getContractCategory(),
+            'sports' => $this->sports,
+            'countries' => $this->countries
+        ]);
     }
 }

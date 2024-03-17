@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
+
 
 class Customer extends Model
 {
-    use HasFactory;
+    use HasFactory, HasUuids;
 
     protected $fillable = [
         'first_name',
@@ -20,6 +22,7 @@ class Customer extends Model
         'country',
         'image',
         'comment',
-        'sports'
+        'sports',
+        'gender'
     ];
 }
