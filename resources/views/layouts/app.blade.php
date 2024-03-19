@@ -23,6 +23,10 @@
         integrity="sha512-34s5cpvaNG3BknEWSuOncX28vz97bRI59UnVtEEpFX536A7BtZSJHsDyFoCl8S7Dt2TPzcrCEoHBGeM4SUBDBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    {{-- bootstrap icons --}}
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet">
+
 </head>
 
 <body>
