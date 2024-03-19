@@ -22,6 +22,7 @@ Route::controller(CustomerController::class)->group(function () {
     Route::get('/list', 'list')->name('table');
     Route::get('/edit/{customer}', 'edit')->name('editCustomer');
     Route::post('/update/{customer}', 'update')->name('updateCustomer');
+    Route::get('/delete/{customer}', 'delete')->name('deleteCustomer');
 });
 
 Route::controller(ContractCategoryController::class)->group(function () {

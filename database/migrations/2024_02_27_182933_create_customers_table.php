@@ -22,6 +22,7 @@ return new class extends Migration
             $table->json('sports');
             $table->enum('gender', ['male', 'female']);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 };

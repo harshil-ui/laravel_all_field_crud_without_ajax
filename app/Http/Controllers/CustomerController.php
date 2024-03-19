@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CustomerRequest;
 use App\Models\ContractCategory;
 use App\Models\Customer;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -41,12 +42,33 @@ class CustomerController extends Controller
         return ContractCategory::select('id', 'name')->get();
     }
 
-    public function list()
+    public function list(Request $request)
     {
-        $customers = DB::table('customers')
-            ->join('contract_categories', 'customers.contract_category_id', '=', 'contract_categories.id')
-            ->select('customers.*', 'contract_categories.name AS contractCategory')
-            ->get();
+        $search = $request->search;
+        if ($request->filled('search')) {
+            $customers = DB::table('customers')
+                ->join('contract_categories', 'customers.contract_category_id', '=', 'contract_categories.id')
+                ->select('customers.*', 'contract_categories.name AS contractCategory')
+                ->where('contract_categories.name', 'LIKE', '%' . $search . '%')
+                ->orWhere('customers.first_name', 'LIKE', '%' . $search . '%')
+                ->orWhere('customers.email', 'LIKE', '%' . $search . '%')
+                ->orWhere('customers.last_name', 'LIKE', '%' . $search . '%')
+                ->orWhere('customers.number', 'LIKE', '%' . $search . '%')
+                ->orWhere('customers.date', 'LIKE', '%' . $search . '%')
+                ->orWhere('customers.country', 'LIKE', '%' . $search . '%')
+                ->orWhere('customers.comment', 'LIKE', '%' . $search . '%')
+                ->orWhere('customers.sports', 'LIKE', '%' . $search . '%')
+                ->orWhere('customers.gender', 'LIKE', '%' . $search . '%')
+                ->orderBy('customers.id', 'desc')
+                ->where('customers.deleted_at', NULL)
+                ->get();
+        } else {
+            $customers = DB::table('customers')
+                ->join('contract_categories', 'customers.contract_category_id', '=', 'contract_categories.id')
+                ->select('customers.*', 'contract_categories.name AS contractCategory')
+                ->where('customers.deleted_at', NULL)
+                ->get();
+        }
         return view('customers.index', ['customers' => $customers]);
     }
 
@@ -69,5 +91,11 @@ class CustomerController extends Controller
         $data['sports'] = json_encode($data['sports']);
         $customer->update($data);
         return redirect(route('table'))->with('message', 'Customer updated successfully');
+    }
+
+    public function delete(Customer $customer)
+    {
+        $customer->delete();
+        return redirect(route('table'))->with('message', 'Customer deleted successfully');
     }
 }

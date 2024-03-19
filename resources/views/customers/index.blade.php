@@ -5,7 +5,15 @@
 @section('content')
 
     <a href="{{ route('home') }}">Create customer</a>
+    <br><br>
 
+    <form action="" method="get">
+        <div class="input-group mb-3">
+            <input type="text" name="search" value="{{ request()->get('search') }}" class="form-control"
+                placeholder="Search..." aria-label="Search" aria-describedby="button-addon2" id="">
+            <button class="btn btn-success" type="submit" id="button-addon2">Search</button>
+        </div>
+    </form>
     <table class="table">
         <tr>
             <th>Sr no</th>
@@ -32,17 +40,22 @@
                 <td>{{ $value->number }}</td>
                 <td>{{ $value->date }}</td>
                 <td>{{ $value->contractCategory }}</td>
-                <td>{{ implode(', ', json_decode($value->country)) }}</td>
+                <td>{{ $value->country != null ? implode(', ', json_decode($value->country)) : '' }}</td>
                 <td>
-                    <img src="{{ Storage::url($value->image) }}" title="customer's image" alt="Customer image" height="100px"
-                        width="100px">
+                    <img src="{{ Storage::url($value->image) }}" title="customer's image" alt="Customer image"
+                        height="100px" width="100px">
                 </td>
                 <td>{{ $value->comment }}</td>
-                <td>{{ implode(', ', json_decode($value->sports)) }}</td>
+                <td>{{ $value->sports != null ? implode(', ', json_decode($value->sports)) : '' }}</td>
                 <td>{{ $value->gender }}</td>
                 <td>
-                    <a href="{{ route('editCustomer', $value->id) }}">Edit</a>
-                    <a href="">Delete</a>
+                    <a href="{{ route('editCustomer', $value->id) }}" title="Edit customer"><i
+                            class="bi bi-pencil"></i></a>
+                    <a href="{{ route('deleteCustomer', $value->id) }}"
+                        onclick="return confirm(`are sure wanted to delete this customer {{ $value->first_name }} {{ $value->last_name }}`)"
+                        title="Delete customer">
+                        <i class="bi bi-trash"></i>
+                    </a>
                 </td>
             </tr>
         @endforeach
