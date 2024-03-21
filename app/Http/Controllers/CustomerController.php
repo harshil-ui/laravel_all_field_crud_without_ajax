@@ -8,6 +8,8 @@ use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+
 
 
 class CustomerController extends Controller
@@ -95,6 +97,7 @@ class CustomerController extends Controller
 
     public function delete(Customer $customer)
     {
+        Storage::delete($customer->image);
         $customer->delete();
         return redirect(route('table'))->with('message', 'Customer deleted successfully');
     }
