@@ -4,5 +4,5 @@ jQuery(document).ready(function ($) {
         $('.datepicker').datepicker({
             format: 'yyyy-mm-dd'
         });
-    }, 1000);
+    }, 100);
 });

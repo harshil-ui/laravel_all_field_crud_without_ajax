@@ -8,4 +8,4 @@
 
 @endsection
 
-@extends('layouts.footer')
+{{-- @extends('layouts.footer') --}}

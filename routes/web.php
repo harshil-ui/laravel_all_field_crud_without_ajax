@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ContractCategoryController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,4 +29,10 @@ Route::controller(CustomerController::class)->group(function () {
 Route::controller(ContractCategoryController::class)->group(function () {
     Route::get('/create-contract', 'create')->name('create-contract');
     Route::post('/insert-contract', 'store')->name('insert-contract');
+});
+
+Route::controller(UserController::class)->group(function () {
+    Route::get('/register', 'create')->name('register-user');
+    Route::post('/post-user', 'store')->name('post-user');
+    Route::get('/login', 'login')->name('login');
 });
