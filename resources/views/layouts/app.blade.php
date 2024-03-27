@@ -1,3 +1,6 @@
+<?php
+use Illuminate\Support\Facades\Route;
+?>
 <!doctype html>
 <html lang="en">
 
@@ -26,7 +29,6 @@
     {{-- bootstrap icons --}}
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet">
-
 </head>
 
 <body>
@@ -44,6 +46,9 @@
         <p class="alert alert-info">{{ session('message') }}</p>
     @endif
     <div class="mx-5">
+        @if (Route::currentRouteName() !== 'login' && Route::currentRouteName() !== 'register-user')
+            <a href="{{ route('logout') }}">Logout</a> <br>
+        @endif
         @yield('content')
     </div>
 
@@ -59,3 +64,6 @@
     </script>
 
     <script src="{{ asset('js/script.js') }}"></script>
+</body>
+
+</html>

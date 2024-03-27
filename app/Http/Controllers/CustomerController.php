@@ -31,7 +31,6 @@ class CustomerController extends Controller
 
     public function create()
     {
-
         return view('customers.form', [
             'contractCategory' => $this->getContractCategory(),
             'sports' => $this->sports,
