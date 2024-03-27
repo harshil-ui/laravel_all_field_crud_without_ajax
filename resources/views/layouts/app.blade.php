@@ -1,3 +1,6 @@
+<?php
+use Illuminate\Support\Facades\Route;
+?>
 <!doctype html>
 <html lang="en">
 
@@ -43,6 +46,9 @@
         <p class="alert alert-info">{{ session('message') }}</p>
     @endif
     <div class="mx-5">
+        @if (Route::currentRouteName() !== 'login' && Route::currentRouteName() !== 'register-user')
+            <a href="{{ route('logout') }}">Logout</a> <br>
+        @endif
         @yield('content')
     </div>
 

@@ -31,6 +31,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/create-contract', 'create')->name('create-contract');
         Route::post('/insert-contract', 'store')->name('insert-contract');
     });
+
+    Route::controller(UserController::class)->group(function () {
+        Route::get('/logout', 'logout')->name('logout');
+    });
 });
 
 Route::middleware(['guest'])->group(function () {
@@ -38,5 +42,6 @@ Route::middleware(['guest'])->group(function () {
         Route::get('/register', 'create')->name('register-user');
         Route::post('/post-user', 'store')->name('post-user');
         Route::get('/login', 'login')->name('login');
+        Route::post('/post-login', 'postLogin')->name('post-login');
     });
 });
