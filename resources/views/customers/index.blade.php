@@ -60,7 +60,7 @@
             </tr>
         @endforeach
     </table>
-
+    {{ $customers->links() }}
 @endsection
 
 @extends('layouts.footer')
