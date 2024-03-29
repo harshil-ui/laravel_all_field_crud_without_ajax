@@ -68,7 +68,7 @@ class CustomerController extends Controller
                 ->join('contract_categories', 'customers.contract_category_id', '=', 'contract_categories.id')
                 ->select('customers.*', 'contract_categories.name AS contractCategory')
                 ->where('customers.deleted_at', NULL)
-                ->get();
+                ->paginate(5);
         }
         return view('customers.index', ['customers' => $customers]);
     }

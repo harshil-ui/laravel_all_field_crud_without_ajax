@@ -25,4 +25,3 @@
     </form>
 
 @endsection
-@extends('layouts.footer')

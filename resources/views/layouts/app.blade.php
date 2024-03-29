@@ -1,6 +1,3 @@
-<?php
-use Illuminate\Support\Facades\Route;
-?>
 <!doctype html>
 <html lang="en">
 
@@ -46,9 +43,9 @@ use Illuminate\Support\Facades\Route;
         <p class="alert alert-info">{{ session('message') }}</p>
     @endif
     <div class="mx-5">
-        @if (Route::currentRouteName() !== 'login' && Route::currentRouteName() !== 'register-user')
-            <a href="{{ route('logout') }}">Logout</a> <br>
-        @endif
+        @auth
+            <a href="{{ route('logout') }}">Logout</a> <br>        
+        @endauth
         @yield('content')
     </div>
 
@@ -63,7 +60,7 @@ use Illuminate\Support\Facades\Route;
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous">
     </script>
 
-    <script src="{{ asset('js/script.js') }}"></script>
+    @stack('scripts')
 </body>
 
 </html>
