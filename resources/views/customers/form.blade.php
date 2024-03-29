@@ -38,8 +38,8 @@
 
                     <div class="mb-3">
                         <label for="email">Email : </label>
-                        <input type="email" name="email" autocomplete="off" id="email" class="form-control" placeholder="Enter email"
-                            value="{{ isset($customer->email) ? $customer->email : '' }}">
+                        <input type="email" name="email" autocomplete="off" id="email" class="form-control"
+                            placeholder="Enter email" value="{{ isset($customer->email) ? $customer->email : '' }}">
                     </div>
 
                     {{-- Password field --}}
@@ -55,8 +55,8 @@
 
                     <div class="mb-3">
                         <label for="number">Number : </label>
-                        <input type="text" name="number" id="number" autocomplete="off" class="form-control" placeholder="Enter number"
-                            value="{{ isset($customer->number) ? $customer->number : '' }}">
+                        <input type="text" name="number" id="number" autocomplete="off" class="form-control"
+                            placeholder="Enter number" value="{{ isset($customer->number) ? $customer->number : '' }}">
                     </div>
 
                     {{-- Date picker --}}
@@ -143,6 +143,8 @@
                         </fieldset>
                     </div>
 
+                    {{-- use directive for checked and selected --}}
+
                     <div class="mb-3">
                         <button type="submit" class="btn btn-primary">
                             {{ isset($customer) ? 'Update customer' : 'Add customer' }}
@@ -153,6 +155,8 @@
             </div>
         </div>
     </form>
-@endsection
 
-@extends('layouts.footer')
+    @push('scripts')
+        <script src="{{ asset('js/script.js') }}"></script>
+    @endpush
+@endsection
