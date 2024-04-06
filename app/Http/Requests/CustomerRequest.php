@@ -23,7 +23,7 @@ class CustomerRequest extends FormRequest
             'date' => ['required', 'date_format:Y-m-d'],
             'contract_category_id' => ['required'],
             'country' => ['required', 'array'],
-            'image' => ['required', File::image()->min(1)->max(1024 * 12)],
+            'image' => empty($this->customer['image']) ? ['required', File::image()->min(1)->max(1024 * 12)] : ['nullable'],
             'comment' => ['nullable'],
             'sports' => ['required', 'array'],
             'gender' => ['required']
